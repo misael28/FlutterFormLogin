@@ -10,4 +10,16 @@ class InternalStorage {
     internalPref.setString('surname', surName);
     print('Dados Salvos');
   }
+
+  Future<String> getUserFullName() async {
+    final internalPref = await _prefs;
+    String? name = internalPref.getString("name");
+    String? surName = internalPref.getString("surName");
+
+    if((name != null) && (surName!=null)){
+      return name + " " + surName; 
+    } else {
+      return "Usuario nao encontrado";      
+    }
+  }
 }

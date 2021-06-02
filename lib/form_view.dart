@@ -31,7 +31,7 @@ class _FormViewState extends State<FormView> {
                     decoration: InputDecoration(
                       hintText: 'Nome',
                     ),
-                    onChanged: (String text) => controller.onChangeLastName(text),
+                    onChanged: (value){controller.onChangeName(value);},
                   ),
                 ),
                 Container(
@@ -42,21 +42,42 @@ class _FormViewState extends State<FormView> {
                     decoration: InputDecoration(
                       hintText: "Sobrenome"
                     ),
-                    onChanged: (String text)=>controller.onChangeName(text),
+                    onChanged: (value){controller.onChangeSurName(value);},
                   ),
                 ),
-                Container(
-                   margin: EdgeInsets.all(15),
-                  child: ElevatedButton(onPressed: (){
-                    final isValid = controller.isValid;
-                    if(isValid){
-                      showDialog(context: context, builder: (context) {
-                        return AlertDialog(
-                          title: Text('Bem vindo! ${controller.isValid} ${controller.surName}'),
-                        );
-                      });
-                    }
-                  }, child: Text("Validar")),
+                Row(
+                    children : [
+                      Container(
+                     margin: EdgeInsets.all(15),
+                    child: ElevatedButton(
+                      onPressed: (){
+                      final isValid = controller.isValid;
+                      if(isValid){
+                        showDialog(
+                          context: context, 
+                          builder: (context) {
+                          final name = controller.name;
+                          return AlertDialog(
+                            title: Text('Bem vindo! $name'),
+                          );
+                        });
+                      }
+                    }, child: Text("Validar")),
+                  ),
+                  Container(
+                     margin: EdgeInsets.all(15),
+                    child: ElevatedButton(onPressed: (){
+                      final isValid = controller.isValid;
+                      if(isValid){
+                        showDialog(context: context, builder: (context) {
+                          return AlertDialog(
+                            title: Text('Bem vindo! ${controller.name} ${controller.surName}'),
+                          );
+                        });
+                      }
+                    }, child: Text("Validar")),
+                  )
+                  ]
                 )
               ],),
           ),

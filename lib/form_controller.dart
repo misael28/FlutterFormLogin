@@ -18,6 +18,10 @@ class FormController {
     }
       return null;
   }
-  onChangeName(String value) => _model.setName = value;
-  onChangeLastName(String value)=> _model.setSurName = value;
+  void onChangeName(String value){
+    _model.setName = value;
+   } 
+  onChangeSurName(String value){
+    _model.setSurName = value;
+  } 
 }
