@@ -1,4 +1,5 @@
 import 'package:form/internal_storage.dart';
+import 'package:form/shared_preferences_adapter.dart';
 
 class FormModel{
   String? _name;
@@ -16,7 +17,10 @@ class FormModel{
     this._surName = surName;
   }
 
-  final InternalStorage internalStorage = InternalStorage();
+  final InternalStorageAdapter internalStorage;
+
+  FormModel({InternalStorageAdapter ? internalStorageAdapter})
+    : internalStorage = internalStorageAdapter ?? SharedPreferencesAdapter();
 
 
   void saveUser(){
@@ -27,6 +31,6 @@ class FormModel{
   }
 
   Future<String> getFullName() {
-    return internalStorage.getUserFullName();
+    return internalStorage.getFullName();
   }
 }
