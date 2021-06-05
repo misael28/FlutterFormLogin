@@ -57,26 +57,31 @@ class _FormViewState extends State<FormView> {
                           context: context, 
                           builder: (context) {
                           final name = controller.name;
+                          final surName = controller.surName;
                           return AlertDialog(
-                            title: Text('Bem vindo! $name'),
-                          );
+                            title: Text('Bem vindo! $name $surName'),
+                            content:
+                                Container(
+                                  child: ElevatedButton(
+                                    onPressed:(){
+                                      controller.saveUser();
+                                      }, 
+                                      child: Text('Salvar'))
+                                ),  
+                            );
                         });
                       }
                     }, child: Text("Validar")),
                   ),
                   Container(
                      margin: EdgeInsets.all(15),
-                    child: ElevatedButton(onPressed: (){
-                      final isValid = controller.isValid;
-                      if(isValid){
-                        showDialog(context: context, builder: (context) {
-                          return AlertDialog(
-                            title: Text('Bem vindo! ${controller.name} ${controller.surName}'),
-                          );
-                        });
-                      }
-                    }, child: Text("Validar")),
-                  )
+                    child: FutureBuilder<String>(
+                        future: controller.fullName,
+                        builder: (context, snapshot) {
+                          return Text(snapshot.data ?? '');
+                        },
+                      )
+                    ) 
                   ]
                 )
               ],),

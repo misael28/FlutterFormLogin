@@ -17,10 +17,16 @@ class FormModel{
   }
 
   final InternalStorage internalStorage = InternalStorage();
+
+
   void saveUser(){
     if(_name == null) return;
     if(_surName == null) return;
 
     internalStorage.saveUser(_name!, _surName!);
+  }
+
+  Future<String> getFullName() {
+    return internalStorage.getUserFullName();
   }
 }

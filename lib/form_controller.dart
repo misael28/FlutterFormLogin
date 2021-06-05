@@ -7,8 +7,8 @@ class FormController {
   final _model = FormModel();
   bool get isValid => _formKey.currentState!.validate();
 
-  String get name => _model.getName();
-  String get surName => _model.getSurName();
+  String get name => _model.getName;
+  String get surName => _model.getSurName;
 
   GlobalKey get formKey => _formKey;
 
@@ -21,7 +21,13 @@ class FormController {
   void onChangeName(String value){
     _model.setName = value;
    } 
-  onChangeSurName(String value){
+  void onChangeSurName(String value){
     _model.setSurName = value;
   } 
+
+  void saveUser() {
+    _model.saveUser();
+  }
+
+  Future<String> get fullName => _model.getFullName();
 }
