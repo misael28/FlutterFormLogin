@@ -34,4 +34,9 @@ class FormModel{
   Future<String> getFullName() {
     return internalStorage.getFullName();
   }
+
+  Future<String> deleteUser(int? id){
+    if(id == null) return Future.value('provide id');
+    return internalStorage.deleteUser(id);
+  }
 }

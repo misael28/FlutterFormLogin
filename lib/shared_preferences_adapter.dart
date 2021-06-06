@@ -15,13 +15,19 @@ class SharedPreferencesAdapter extends InternalStorageAdapter{
   Future<String> getFullName() async {
     final internalPref = await _prefs;
     String? name = internalPref.getString("name");
-    String? surName = internalPref.getString("surName");
+    String? surName = internalPref.getString("surname");
 
     if((name != null) && (surName != null)){
       return name + " " + surName; 
     } else {
       return "Usuario nao encontrado";      
     }
+  }
+
+  @override
+  Future<String> deleteUser(int id) {
+    // TODO: implement deleteUser
+    throw UnimplementedError();
   }
 
 }

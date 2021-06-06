@@ -21,4 +21,10 @@ class SecureStorageAdapter extends InternalStorageAdapter {
     }
   }
 
+  @override
+  Future<String> deleteUser(int id) {
+    // TODO: implement deleteUser
+    throw UnimplementedError();
+  }
+
 }

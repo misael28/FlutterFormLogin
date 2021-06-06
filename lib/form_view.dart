@@ -78,13 +78,19 @@ class _FormViewState extends State<FormView> {
                     child: FutureBuilder<String>(
                         future: controller.fullName,
                         builder: (context, snapshot) {
-                          return Text(snapshot.data ?? '');
+                          return Text(
+                            snapshot.data ?? '',
+                            maxLines: 10,);
                         },
                       )
                     ) 
                   ]
-                )
-              ],),
+                ),
+              ElevatedButton(
+                onPressed: (){},
+                child: Text(''),
+              )],
+              ),
           ),
         ),
       ),

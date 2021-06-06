@@ -30,4 +30,6 @@ class FormController {
   }
 
   Future<String> get fullName => _model.getFullName();
+
+  Future<String> deleteUser(int? id) => _model.deleteUser(id);
 }
